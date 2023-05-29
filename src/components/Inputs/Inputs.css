@@ -1,0 +1,12 @@
+.username {
+    color: var(--black);
+}
+
+.password {
+    color: var(--black);
+    margin-top: 15px;
+}
+
+input {
+    color: var(--black);
+}
