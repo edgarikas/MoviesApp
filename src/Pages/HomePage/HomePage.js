@@ -1,54 +1,58 @@
-import React from "react";
+import React, { useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  getFavoritesMovies,
+  getMovies,
+  getError,
+  getLoading,
+} from '../../Content/selectors.js';
+import * as action from '../../Content/actions';
 
-import Button from '../../components/Button/Button'
+import Button from '../../components/Button/Button';
 import { Link } from 'react-router-dom';
 
-import "./HomePage.css";
-import Loader  from '../../components/Loader/Loader'
+import './HomePage.css';
+import Loader from '../../components/Loader/Loader';
 import MovieCard from '../../components/MovieCard/MovieCard';
-import Hero from '../../components//Hero/Hero'
+import Hero from '../../components//Hero/Hero';
 
-const FREE_MOVIES_API = "https://dummy-video-api.onrender.com/content/free-items";
+const FREE_MOVIES_API =
+  'https://dummy-video-api.onrender.com/content/free-items';
 
+function HomePage() {
+  const favoritesMovies = useSelector(getFavoritesMovies);
+  const err = useSelector(getError);
+  const loading = useSelector(getLoading);
+  const movies = useSelector(getMovies);
 
+  const dispatch = useDispatch();
 
-class Home extends React.Component {
-  state = {
-    loading: false,
-    error: false,
-    movies: [],
-  };
-
-  async componentDidMount() {
-    this.setState({ loading: true });
-
+  const fetchData = useCallback(async () => {
+    dispatch(action.setMoviesLoading());
     try {
       const response = await fetch(FREE_MOVIES_API);
 
       if (response.status > 399 && response.status < 600) {
-        throw new Error("failed to load");
+        throw new Error('Failed to load');
       }
+      const resultData = await response.json();
 
-      const movies = await response.json();
-
-      this.setState({ movies });
+      dispatch(action.setMoviesSucces(resultData));
     } catch (error) {
-      this.setState({ error: true });
-    } finally {
-      this.setState({ loading: false });
+      dispatch(action.setMoviesFailure());
     }
-  }
+  }, [dispatch]);
 
-  render() {
-    const { movies, loading, error } = this.state;
-    const { favorites, toggleFavorite } = this.props;
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
-    return (
-      <div className="Home">
-        {loading && <Loader/>}
-        {error && <p>Whoops! Movies stolen by pirate clouds! 😱🏴‍☠️☁️</p>}
-        <Hero title='Wanna More Content?' btnTitle='Get Access' />
-        <div className='movie-list'>
+  return (
+    <div className='Home'>
+      {loading && <Loader />}
+      {err && <p>Whoops! Movies stolen by pirate clouds! 😱🏴‍☠️☁️</p>}
+      <Hero title='Wanna More Content?' btnTitle='Get Access' />
+      <div className='movie-list'>
         {movies.map(({ title, id, description, image }) => (
           <MovieCard
             id={id}
@@ -56,25 +60,20 @@ class Home extends React.Component {
             title={title}
             description={description}
             image={image}
-            isFavorite={favorites.includes(id)}
-            onToggleFavorite={() => toggleFavorite(id)}
+            isFavorite={favoritesMovies.includes(id)}
+            onToggleFavorite={() =>
+              dispatch(action.toggleFavorite(id, favoritesMovies.includes(id)))
+            }
           />
         ))}
-        </div>
-        <div className='moreContent'>
-            <Link to='/login'>
-            <Button>Get More Content </Button>
-            </Link>
-        
       </div>
+      <div className='moreContent'>
+        <Link to='/login'>
+          <Button>Get More Content </Button>
+        </Link>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
-Home.defaultProps = {
-  favorites: [],
-  toggleFavorite: () => {},
-};
-
-export default Home;
+export default HomePage;

@@ -11,7 +11,7 @@
   transition: 0.5s;
 }
 
-.Button:hover{
+.Button:hover {
   background: var(--darkRed);
 }
 
@@ -23,6 +23,10 @@
 
 .Button--small {
   padding: 7px 24px;
+}
+
+.Button--very--small {
+  padding: 3px 14px;
 }
 
 .Button--outline {

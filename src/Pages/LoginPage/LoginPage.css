@@ -1,25 +1,24 @@
 .Login {
-    padding-top: 10vh;
+  padding-top: 10vh;
+}
 
-  }
-  
-  .Login__form {
-    background: #c4c4c4;
-    border-radius: 10px;
-    display: inline-flex;
-    flex-direction: column;
-    padding: 60px 60px 18px;
-    color: var(--black);
-    margin: 0 auto;
-    align-items: center;
-  }
+.Login__form {
+  background: #c4c4c4;
+  border-radius: 10px;
+  display: inline-flex;
+  flex-direction: column;
+  padding: 60px 60px 18px;
+  color: var(--black);
+  margin: 0 auto;
+  align-items: center;
+}
 
-  .button {
-      margin-top: 20px;
-      margin-bottom: 5px;
-  }
-  
-  .Login__error {
-      color: var(--red);
-      font-weight: 700;
-  }
+.Login__button {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.Login__error {
+  color: var(--red);
+  font-weight: 700;
+}

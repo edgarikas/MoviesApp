@@ -1,30 +1,40 @@
-import { Link, useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from 'react-router-dom';
+import { connect, useSelector } from 'react-redux';
 import Button from '../Button/Button';
 
 import logo from '../../images/F.png';
-import "./Header.css";
+import './Header.css';
+import * as AUTH from '../../auth/types';
+import { getToken } from '../../auth/selectors';
 
-function Header({ updateAuthToken, authToken }) {
+function Header({ logout }) {
   const navigate = useNavigate();
+  const token = useSelector(getToken);
 
   const onLogout = () => {
-    updateAuthToken("");
-    navigate("/");
+    navigate('/');
+    logout();
   };
   return (
-    <header className="Header">
-      <div className="Header__container">
-        <Link to="/">
-          <img className="Header__logo" src={logo} alt="logo" />
+    <header className='Header'>
+      <div className='Header__container'>
+        <Link to={token ? '/content' : '/'}>
+          <img className='Header__logo' src={logo} alt='logo' />
         </Link>
-        <Button to={authToken ? null : "/login"} onClick={authToken ? onLogout : null}>
-          {authToken ? "Log out" : "Sign in"}
+        <Button to={token ? null : '/login'} onClick={token ? onLogout : null}>
+          {token ? 'Log out' : 'Sign in'}
         </Button>
-
       </div>
     </header>
   );
 }
 
-export default Header;
+function mapDispatchToProps(dispatch) {
+  return {
+    logout: () => {
+      dispatch({ type: AUTH.LOGOUT });
+    },
+  };
+}
+
+export default connect(null, mapDispatchToProps)(Header);

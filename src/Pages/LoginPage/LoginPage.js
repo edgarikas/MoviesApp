@@ -1,68 +1,85 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Button from "../../components/Button/Button";
-import Input from "../../components/Inputs/Inputs";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Button from '../../components/Button/Button';
+import Input from '../../components/Inputs/Inputs';
+import * as action from '../../auth/actions';
+import { getLoading, getError } from '../../auth/selectors';
 
-import "./LoginPage.css";
+import './LoginPage.css';
 
-const LOGIN_API = "https://dummy-video-api.onrender.com/auth/login";
+import { useSelector, useDispatch } from 'react-redux';
 
-function Login({ updateAuthToken }) {
+const LOGIN_API = 'https://dummy-video-api.onrender.com/auth/login';
+
+function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-  const [errorType, setErrorType] = useState();
-  const [loading, setLoading] = useState(false);
-  const errorMessage = {
-    empty: "Fields cannot be Empty",
-    credentials: "Check login details",
-    request: "Oops! Something expolded! 💥",
-  }[errorType];
+
+  const error = useSelector(getError);
+  const loading = useSelector(getLoading);
+
+  const dispatch = useDispatch();
 
   const onSubmit = async (e) => {
     e.preventDefault();
 
     if (!username || !password) {
-      setErrorType("empty");
+      dispatch(action.loginFailure('empty'));
     } else {
-      setLoading(true);
+      dispatch(action.loginLoading(true));
+      dispatch(action.loginFailure(''));
+
       try {
         const response = await fetch(LOGIN_API, {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({ username, password }),
         });
 
         if (response.status > 399 && response.status < 600) {
-          setErrorType(response.status === 400 ? "credentials" : "request");
+          dispatch(
+            action.loginFailure(
+              response.status === 400 ? 'credentials' : 'request'
+            )
+          );
         } else {
           const { token } = await response.json();
 
-          updateAuthToken(token);
-          navigate("/content");
+          dispatch(action.loginSuccess(token));
+          navigate('/content');
         }
       } catch (error) {
-        setErrorType("request");
+        dispatch(action.loginFailure('request'));
       } finally {
-        setLoading(false);
+        dispatch(action.loginLoading(false));
       }
     }
   };
 
   return (
-    <div className="Login">
-      <form className="Login__form" onSubmit={onSubmit}>
-        <Input kind='username' onChange={(e) => setUsername(e.target.value)} label="Username" />
-        <Input kind='password'  onChange={(e) => setPassword(e.target.value)} label="Password" type="password" />
-        <div className='button'>
-        <Button disabled={loading} type="submit" size='small'>
-          {loading ? "Loading..." : "Sign In"}
-        </Button>
+    <div className='Login'>
+      <form className='Login__form' onSubmit={onSubmit}>
+        <Input
+          kind='username'
+          onChange={(e) => setUsername(e.target.value)}
+          label='Username'
+        />
+        <Input
+          kind='password'
+          onChange={(e) => setPassword(e.target.value)}
+          label='Password'
+          type='password'
+        />
+        <div className='Login__button'>
+          <Button disabled={loading} type='submit' size='small'>
+            {loading ? 'Loading...' : 'Sign In'}
+          </Button>
         </div>
-        
-        {errorMessage && <p className="Login__error">{errorMessage}</p>}
+
+        {error && <p className='Login__error'>{error}</p>}
       </form>
     </div>
   );
