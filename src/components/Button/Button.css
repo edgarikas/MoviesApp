@@ -23,6 +23,7 @@
 
 .Button--small {
   padding: 7px 24px;
+  margin-right: 10px;
 }
 
 .Button--very--small {

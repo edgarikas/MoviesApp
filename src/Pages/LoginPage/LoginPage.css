@@ -1,5 +1,8 @@
 .Login {
   padding-top: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Login__form {

@@ -9,7 +9,7 @@ import './LoginPage.css';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-const LOGIN_API = 'https://dummy-video-api.onrender.com/auth/login';
+import { API } from '../../constants';
 
 function Login() {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ function Login() {
       dispatch(action.loginFailure(''));
 
       try {
-        const response = await fetch(LOGIN_API, {
+        const response = await fetch(API.login, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

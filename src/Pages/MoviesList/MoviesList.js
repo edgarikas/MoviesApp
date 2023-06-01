@@ -14,7 +14,7 @@ import {
   getLoading,
 } from '../../Content/selectors.js';
 
-const MOVIES_API = 'https://dummy-video-api.onrender.com/content/items';
+import { API } from '../../constants';
 
 function LoggedUser({
   toggleFavorite,
@@ -36,7 +36,7 @@ function LoggedUser({
           method: 'GET',
           headers: { authorization: token },
         };
-        const response = await fetch(MOVIES_API, requestOption);
+        const response = await fetch(API.paidContent, requestOption);
         const resultData = await response.json();
 
         setMoviesSucces(resultData);

@@ -18,6 +18,7 @@ import {
 
 import './MovieDetails.css';
 import Button from '../../components/Button/Button';
+import { API } from '../../constants';
 
 function MovieDetails({
   toggleFavorite,
@@ -40,10 +41,9 @@ function MovieDetails({
     setMoviesLoading();
     if (token)
       try {
-        const response = await fetch(
-          `https://dummy-video-api.onrender.com/content/items/${movieId}`,
-          { headers: { authorization: token } }
-        );
+        const response = await fetch(API.singleMovie(movieId), {
+          headers: { authorization: token },
+        });
         if (response.ok) {
           const movie = await response.json();
 
@@ -66,7 +66,7 @@ function MovieDetails({
   };
 
   const backToContent = () => {
-    navigate('/content');
+    navigate(-1);
   };
 
   return (

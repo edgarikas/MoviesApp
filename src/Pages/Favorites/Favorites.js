@@ -1,31 +1,27 @@
-import React, { useEffect, useCallback, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
   getFavoritesMovies,
   getMovies,
   getError,
   getLoading,
-} from '../../Content/selectors.js';
+} from '../../Content/selectors';
+import { API } from '../../constants';
 import * as action from '../../Content/actions';
-
-import Button from '../../components/Button/Button';
-import { Link } from 'react-router-dom';
-
-import './HomePage.css';
 import Loader from '../../components/Loader/Loader';
 import MovieCard from '../../components/MovieCard/MovieCard';
-import Hero from '../../components//Hero/Hero';
+import Button from '../../components/Button/Button';
 
-import { API } from '../../constants';
+import './Favorites.css';
 
-function HomePage() {
+function Favorites() {
   const favoritesMovies = useSelector(getFavoritesMovies);
   const err = useSelector(getError);
   const loading = useSelector(getLoading);
   const movies = useSelector(getMovies);
-  const [data, setData] = useState(movies);
-  const [searchTerm, setSearchTerm] = useState('');
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const fetchData = useCallback(async () => {
@@ -44,33 +40,33 @@ function HomePage() {
     }
   }, [dispatch]);
 
-  useEffect(() => {
+  if (movies.length < 1) {
     fetchData();
-  }, [fetchData]);
+  }
+  const favMovies = [];
+  movies.forEach((movie) => {
+    favoritesMovies.forEach((fav) => {
+      if (movie.id === fav) {
+        favMovies.push(movie);
+      }
+    });
+  });
 
-  useEffect(() => {
-    setData(movies);
-    const filteredMovies = movies.filter((movies) =>
-      movies.title.toLowerCase().includes(searchTerm)
-    );
-    setData(filteredMovies);
-  }, [movies, searchTerm]);
-
-  console.log('aaa', data);
+  const backToContent = () => {
+    navigate(-1);
+  };
 
   return (
-    <div className='Home'>
+    <div>
       {loading && <Loader />}
       {err && <p>Whoops! Movies stolen by pirate clouds! 😱🏴‍☠️☁️</p>}
-      <Hero title='Wanna More Content?' btnTitle='Get Access' />
-      <p className='search--label'>Do you wanna search a Movie? So do it 🔎 </p>
-      <input
-        placeholder='Search Movies'
-        onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
-      />
-      <div className='movie-list'>
-        {data.map(({ title, id, description, image }) => (
+      <Button size='small' onClick={() => backToContent()}>
+        Back
+      </Button>
+      <div className='favorite--movies'>
+        {favMovies.map(({ title, id, description, image }) => (
           <MovieCard
+            isClickable='true'
             id={id}
             key={id}
             title={title}
@@ -83,13 +79,8 @@ function HomePage() {
           />
         ))}
       </div>
-      <div className='moreContent'>
-        <Link to='/login'>
-          <Button>Get More Content </Button>
-        </Link>
-      </div>
     </div>
   );
 }
 
-export default HomePage;
+export default Favorites;

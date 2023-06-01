@@ -21,6 +21,11 @@ function Header({ logout }) {
         <Link to={token ? '/content' : '/'}>
           <img className='Header__logo' src={logo} alt='logo' />
         </Link>
+        <div className='Header__Menu'>
+          <Button size='small' to='/favorites'>
+            Movies ❤️
+          </Button>
+        </div>
         <Button to={token ? null : '/login'} onClick={token ? onLogout : null}>
           {token ? 'Log out' : 'Sign in'}
         </Button>
