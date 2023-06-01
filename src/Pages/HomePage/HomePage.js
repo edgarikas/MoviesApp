@@ -15,6 +15,7 @@ import './HomePage.css';
 import Loader from '../../components/Loader/Loader';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import Hero from '../../components//Hero/Hero';
+import Search from '../../components/Search/Search.js';
 
 import { API } from '../../constants';
 
@@ -56,18 +57,13 @@ function HomePage() {
     setData(filteredMovies);
   }, [movies, searchTerm]);
 
-  console.log('aaa', data);
-
   return (
     <div className='Home'>
       {loading && <Loader />}
       {err && <p>Whoops! Movies stolen by pirate clouds! 😱🏴‍☠️☁️</p>}
       <Hero title='Wanna More Content?' btnTitle='Get Access' />
-      <p className='search--label'>Do you wanna search a Movie? So do it 🔎 </p>
-      <input
-        placeholder='Search Movies'
-        onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
-      />
+      <Search onChange={(e) => setSearchTerm(e.target.value.toLowerCase())} />
+
       <div className='movie-list'>
         {data.map(({ title, id, description, image }) => (
           <MovieCard

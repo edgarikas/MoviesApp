@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { connect, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
@@ -15,6 +15,7 @@ import {
 } from '../../Content/selectors.js';
 
 import { API } from '../../constants';
+import Search from '../../components/Search/Search';
 
 function LoggedUser({
   toggleFavorite,
@@ -27,6 +28,9 @@ function LoggedUser({
   const loading = useSelector(getLoading);
   const err = useSelector(getError);
   const movies = useSelector(getMovies);
+  const [data, setData] = useState(movies);
+  const [searchTerm, setSearchTerm] = useState('');
+
   const navigate = useNavigate();
   const fetchData = useCallback(async () => {
     setMoviesLoading();
@@ -52,14 +56,23 @@ function LoggedUser({
     }
   }, [fetchData, movies]);
 
+  useEffect(() => {
+    setData(movies);
+    const filteredMovies = movies.filter((movies) =>
+      movies.title.toLowerCase().includes(searchTerm)
+    );
+    setData(filteredMovies);
+  }, [movies, searchTerm]);
+
   return (
     <main className='App_main'>
       {err && <p>Whoops! 😱🏴‍☠️☁️</p>}
+      <Search onChange={(e) => setSearchTerm(e.target.value.toLowerCase())} />
       {loading ? (
         <Loader />
       ) : (
         <div className='movie-list'>
-          {movies.map(({ title, id, description, image }) => (
+          {data.map(({ title, id, description, image }) => (
             <MovieCard
               isClickable='true'
               id={id}
