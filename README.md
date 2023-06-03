@@ -1,3 +1,12 @@
+# Sveiki, app'sa atsisiuntus reikia į terminalą parašyti nmp i ir tada galima pasileisti per localhost serverį arba #Website yra nurodytas link'as :)
+
+# App'sas yra filmų sąrašas, kur galima pažiūrėti filmus ir jos pridėti į favorites sąraša. Prisijungęs vartotojas gali paspausti ant filmo ir pažiūrėti detalesnę informaciją (Tutorial ir aprašymą)
+
+# Sukurtas su react&redux pagalba. Duomenų baze yra imituotą su API ir vartotojas yra sukurtas (Username: tester, Password: netflix).
+
+# Website
+https://moviesapptask1.netlify.app/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
