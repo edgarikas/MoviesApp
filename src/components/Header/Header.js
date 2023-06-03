@@ -22,6 +22,9 @@ function Header({ logout }) {
           <img className='Header__logo' src={logo} alt='logo' />
         </Link>
         <div className='Header__Menu'>
+          <Button to={token ? '/content' : '/'} size='small'>
+            Movies List
+          </Button>
           <Button size='small' to='/favorites'>
             Movies ❤️
           </Button>

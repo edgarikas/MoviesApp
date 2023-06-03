@@ -63,6 +63,7 @@ function Favorites() {
       <Button size='small' onClick={() => backToContent()}>
         Back
       </Button>
+      <h1 className='title'>Favorites Movies ❤️</h1>
       <div className='favorite--movies'>
         {favMovies.map(({ title, id, description, image }) => (
           <MovieCard
