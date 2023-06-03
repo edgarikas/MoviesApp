@@ -1,4 +1,4 @@
-# Sveiki, app'sa atsisiuntus reikia į terminalą parašyti nmp i ir tada galima pasileisti per localhost serverį arba #Website yra nurodytas link'as :)
+# Sveiki, app'sa atsisiuntus reikia į terminalą parašyti npm i ir tada galima pasileisti per localhost serverį arba #Website yra nurodytas link'as :)
 
 # App'sas yra filmų sąrašas, kur galima pažiūrėti filmus ir jos pridėti į favorites sąraša. Prisijungęs vartotojas gali paspausti ant filmo ir pažiūrėti detalesnę informaciją (Tutorial ir aprašymą)
 
