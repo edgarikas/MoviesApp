@@ -6,8 +6,10 @@
 - Taigi ši svetainė yra filmų sąrašas, kurioje mes galime peržiūrėti duotus filmus, pridėti jos į mėgstamiausius ir prisijungęs vartotojas gali paspausti ant filmo, kad pamatyti jo detalesnę informaciją.
 - Duomenų bazė yra imituota ir jau yra sukurtas vartotojas (Username: tester, Password: netflix).
 
-
-# Sukurtas su react&redux pagalba. Duomenų baze yra imituota su API ir vartotojas yra sukurtas (Username: tester, Password: netflix).
+# Naudojamos priemonės kuriant svetainę. 🛠️
+- Svetainė buvo kuriama su react&redux pagalba.
+- Filmų sąrašas generuojamas iš API.
+- 
 
 # Getting Started with Create React App
 
