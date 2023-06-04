@@ -2,7 +2,7 @@
 
 # App'sas yra filmų sąrašas, kur galima pažiūrėti filmus ir jos pridėti į favorites sąraša. Prisijungęs vartotojas gali paspausti ant filmo ir pažiūrėti detalesnę informaciją (Tutorial ir aprašymą)
 
-# Sukurtas su react&redux pagalba. Duomenų baze yra imituota su API ir vartotojas yra sukurtas (Username: tester, Password: netflix).
+ Sukurtas su react&redux pagalba. Duomenų baze yra imituota su API ir vartotojas yra sukurtas (Username: tester, Password: netflix).
 
 # Website
 https://moviesapptask1.netlify.app/
