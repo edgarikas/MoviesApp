@@ -1,5 +1,6 @@
 # Sveiki, apie website/app: 
- - app'sa/website galite atsisiųsti į ir paleisti per localhost. Paleidimui reikia terminale parašyti npm i ir npm start. programa pasileis 😇
+ - App'sa/website galite atsisiųsti į ir paleisti per localhost. Paleidimui reikia terminale parašyti npm i ir npm start, programa pasileis 😇
+ - Taip pat programa yra deploy'inta ir pasiekiama viešai, štai link'as -> https://moviesapptask1.netlify.app/ 👌
  
 
 # App'sas yra filmų sąrašas, kur galima pažiūrėti filmus ir jos pridėti į favorites sąraša. Prisijungęs vartotojas gali paspausti ant filmo ir pažiūrėti detalesnę informaciją (Tutorial ir aprašymą)
