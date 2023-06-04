@@ -1,14 +1,13 @@
-# Sveiki, apie website/app: 
- - App'sa/website galite atsisiųsti į ir paleisti per localhost. Paleidimui reikia terminale parašyti npm i ir npm start, programa pasileis 😇
- - Taip pat programa yra deploy'inta ir pasiekiama viešai, štai link'as -> https://moviesapptask1.netlify.app/ 👌
+# Sveiki, apie website: 
+ - Website galite atsisiųsti į ir paleisti per localhost. Paleidimui reikia terminale parašyti npm i ir npm start, svetainė pasileis 😇
+ - Taip pat svetainė yra deploy'inta ir pasiekiama viešai, štai link'as -> https://moviesapptask1.netlify.app/ 👌
  
+# Kas čia per website? 🤔
+- Taigi ši svetainė yra filmų sąrašas, kurioje mes galime peržiūrėti duotus filmus, pridėti jos į mėgstamiausius ir prisijungęs vartotojas gali paspausti ant filmo, kad pamatyti jo detalesne informaciją.
 
-# App'sas yra filmų sąrašas, kur galima pažiūrėti filmus ir jos pridėti į favorites sąraša. Prisijungęs vartotojas gali paspausti ant filmo ir pažiūrėti detalesnę informaciją (Tutorial ir aprašymą)
+
 
 # Sukurtas su react&redux pagalba. Duomenų baze yra imituota su API ir vartotojas yra sukurtas (Username: tester, Password: netflix).
-
-# Website
-https://moviesapptask1.netlify.app/
 
 # Getting Started with Create React App
 
