@@ -8,8 +8,7 @@
 
 # Naudojamos priemonės kuriant svetainę. 🛠️
 - Svetainė buvo kuriama su react&redux pagalba.
-- Filmų sąrašas generuojamas iš API.
-- 
+- Filmų sąrašas generuojamas pagalba API.
 
 # Getting Started with Create React App
 
