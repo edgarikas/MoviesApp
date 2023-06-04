@@ -1,5 +1,5 @@
-# Sveiki, apie website: 
- - Website galite atsisiųsti į ir paleisti per localhost. Paleidimui reikia terminale parašyti npm i ir npm start, svetainė pasileis 😇
+# Sveiki, apie svetainę: 
+ - Svetainės kodo dalį galite atsisiųsti į ir paleisti per localhost. Paleidimui reikia terminale parašyti npm i ir npm start, svetainė pasileis 😇
  - Taip pat svetainė yra deploy'inta ir pasiekiama viešai, štai link'as -> https://moviesapptask1.netlify.app/ 👌
  
 # Kas čia per website? 🤔
