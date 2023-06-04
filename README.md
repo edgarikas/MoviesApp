@@ -4,7 +4,7 @@
  
 # Kas čia per website? 🤔
 - Taigi ši svetainė yra filmų sąrašas, kurioje mes galime peržiūrėti duotus filmus, pridėti jos į mėgstamiausius ir prisijungęs vartotojas gali paspausti ant filmo, kad pamatyti jo detalesne informaciją.
-- Duomenų baze yra imituota ir jau yra sukurtas prisijungęs vartotojas (Username: tester, Password: netflix).
+- Duomenų bazė yra imituota ir jau yra sukurtas prisijungęs vartotojas (Username: tester, Password: netflix).
 
 
 # Sukurtas su react&redux pagalba. Duomenų baze yra imituota su API ir vartotojas yra sukurtas (Username: tester, Password: netflix).
