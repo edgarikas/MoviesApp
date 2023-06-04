@@ -3,7 +3,7 @@
  - Taip pat svetainė yra deploy'inta ir pasiekiama viešai, štai link'as -> https://moviesapptask1.netlify.app/ 👌
  
 # Kas čia per website? 🤔
-- Taigi ši svetainė yra filmų sąrašas, kurioje mes galime peržiūrėti duotus filmus, pridėti jos į mėgstamiausius ir prisijungęs vartotojas gali paspausti ant filmo, kad pamatyti jo detalesnė informaciją.
+- Taigi ši svetainė yra filmų sąrašas, kurioje mes galime peržiūrėti duotus filmus, pridėti jos į mėgstamiausius ir prisijungęs vartotojas gali paspausti ant filmo, kad pamatyti jo detalesnę informaciją.
 - Duomenų bazė yra imituota ir jau yra sukurtas prisijungęs vartotojas (Username: tester, Password: netflix).
 
 
